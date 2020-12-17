@@ -28,7 +28,9 @@ func (s *Server) updatePriceinto() {
 		var result map[string]interface{}
 		err = json.Unmarshal(Number.Body(), &result)
 		UsersNumber := result["result"].(map[string]interface{})["users_num"].(float64)
+		Held_by_users := result["result"].(map[string]interface{})["held_by_users"].(string)
 		s.UsersNumber = (int32)(UsersNumber)
+		s.Held_by_users = Held_by_users
 		time.Sleep(time.Duration(5) * time.Minute)
 	}
 }

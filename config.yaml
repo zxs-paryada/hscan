@@ -1,28 +1,37 @@
 active: "testnet"
 
 mainnet:
-  node: 
+  node:
     lcd_server_endpoint: "http://172.16.0.60:1317"
     node_server_endpoint: "http://172.16.0.60:26657"
     pri_server_endpoint: "https://wallet.hschain.io"
   web:
     ip: 127.0.0.1
     port: 5001
+  ws:
+    ip: 127.0.0.1
+    port: 5002
   mysql:
-    mysql_res : "hschain:hschain@tcp(192.168.15.99:3306)/hschain?charset=utf8mb4&collation=utf8mb4_unicode_ci&parseTime=true"
-
+    mysql_res : "hschain:mingshan2020@hschain@tcp(rm-j6cx23q08q0610098125010.mysql.rds.aliyuncs.com:3306)/hschain?charset=utf8mb4&collation=utf8mb4_unicode_ci&parseTime=true"
+  total:
+    supplement: 4466561
 
 testnet:
-  node: 
+  node:
     #lcd_server_endpoint: "http://172.16.0.60:1317"
     #node_server_endpoint: "http://172.16.0.60:26657"
     #node_server_endpoint: "http://51.75.145.123:26657"
     lcd_server_endpoint: "http://127.0.0.1:1317"
-    node_server_endpoint: "http://127.0.0.1:26657"
+    node_server_endpoint: "http://10.0.0.136:26657"
     pri_server_endpoint: "https://wallet.hschain.io"
   web:
-    ip: 0.0.0.0
+    ip: 10.0.0.139
     port: 5001
+  ws:
+    ip: 127.0.0.1
+    port: 5002
   mysql:
    # mysql_res : "hschain:hschain@tcp(192.168.15.99:3306)/hschain?charset=utf8mb4&collation=utf8mb4_unicode_ci&parseTime=true"
-    mysql_res : "hschain:123456@tcp(127.0.0.1:3306)/hschain?charset=utf8mb4&collation=utf8mb4_unicode_ci&parseTime=true"
+    mysql_res : "hschain:mingshan2020@hschain@tcp(rm-j6cx23q08q0610098125010.mysql.rds.aliyuncs.com:3306)/hschain?charset=utf8mb4&collation=utf8mb4_unicode_ci&parseTime=true"
+  total:
+    supplement: 4466561

@@ -36,6 +36,10 @@ func NewClient(cfg config.NodeConfig) *Client {
 	}
 }
 
+func (c *Client) GetCfg() *config.NodeConfig {
+	return c.cfg
+}
+
 //LatestBlockHeight
 func (c *Client) LatestBlockHeight() (int64, error) {
 	status, err := c.rpcClient.Status()

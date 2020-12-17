@@ -83,7 +83,7 @@ func main() {
 
 	scanner.Start()
 
-	server := server.NewServer(cfg.Web.Ip+":"+cfg.Web.Port, l, db, cdc, client)
+	server := server.NewServer(cfg.Web.Ip+":"+cfg.Web.Port, l, db, cdc, client, cfg)
 
 	server.Start()
 

@@ -3,6 +3,7 @@ package server
 import (
 	"encoding/json"
 	"hscan/models"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"
@@ -62,6 +63,9 @@ func (s *Server) totals(c *gin.Context) {
 	}
 
 	result.Result, _ = s.CoinsPrice(result.Result)
+	amount, _ := strconv.ParseInt(result.Result[0]["amount"].(string), 10, 64)
+	supplement, _ := strconv.ParseInt(s.cfg.Total.Supplement, 10, 64)
+	result.Result[0]["amount"] = strconv.FormatInt(amount-supplement, 10)
 	s.interfaceResponse(c, result)
 }
 

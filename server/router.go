@@ -1,6 +1,7 @@
 package server
 
 import (
+	"hscan/config"
 	"hscan/db"
 	"log"
 
@@ -14,17 +15,19 @@ import (
 )
 
 type Server struct {
-	addr        string
-	e           *gin.Engine
-	l           *log.Logger
-	db          *db.Database
-	cdc         *codec.Codec
-	client      *client.Client
-	Priceinto   map[string]models.PriceInto
-	UsersNumber int32
+	addr          string
+	e             *gin.Engine
+	l             *log.Logger
+	db            *db.Database
+	cdc           *codec.Codec
+	client        *client.Client
+	Priceinto     map[string]models.PriceInto
+	UsersNumber   int32
+	Held_by_users string
+	cfg           *config.Config
 }
 
-func NewServer(addr string, l *log.Logger, db *db.Database, cdc *codec.Codec, client *client.Client) *Server {
+func NewServer(addr string, l *log.Logger, db *db.Database, cdc *codec.Codec, client *client.Client, cfg *config.Config) *Server {
 	return &Server{
 		addr,
 		gin.Default(),
@@ -34,6 +37,8 @@ func NewServer(addr string, l *log.Logger, db *db.Database, cdc *codec.Codec, cl
 		client,
 		make(map[string]models.PriceInto, 1),
 		0,
+		"328221681",
+		cfg,
 	}
 }
 

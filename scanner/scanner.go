@@ -231,6 +231,10 @@ func (s *Scanner) getTxs(txs []*tmctypes.ResultTx, resBlock *tmctypes.ResultBloc
 			RecipientNotice: 0,
 		}
 
+		if len(result) == 0 {
+			return nil, nil
+		}
+
 		if result[0]["success"] == true {
 			tempTransaction.Sender = resp.Events.Flatten()[0].Attributes[0].Value
 			tempTransaction.Recipient = resp.Events.Flatten()[1].Attributes[0].Value

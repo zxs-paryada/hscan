@@ -13,6 +13,7 @@ type Config struct {
 	Node  NodeConfig  `yaml:"node"`
 	Web   WebConfig   `yaml:"web"`
 	Mysql MysqlConfig `yaml:"mysql"`
+	Total TotalConfig `yaml:"total"`
 }
 
 // NodeConfig wraps all node endpoints that are used in this project
@@ -30,6 +31,10 @@ type WebConfig struct {
 
 type MysqlConfig struct {
 	MysqlRes string `yaml:"mysql_res"`
+}
+
+type TotalConfig struct {
+	Supplement string `yaml:"supplement"`
 }
 
 // ParseConfig attempts to read and parse config.yaml from the given path
@@ -67,6 +72,10 @@ func ParseConfig() *Config {
 			MysqlRes: viper.GetString("mainnet.mysql.mysql_res"),
 		}
 
+		cfg.Total = TotalConfig{
+			Supplement: viper.GetString("mainnet.total.supplement"),
+		}
+
 	case "testnet":
 		cfg.Node = NodeConfig{
 			NodeServerEndPoint: viper.GetString("testnet.node.node_server_endpoint"),
@@ -81,6 +90,10 @@ func ParseConfig() *Config {
 
 		cfg.Mysql = MysqlConfig{
 			MysqlRes: viper.GetString("testnet.mysql.mysql_res"),
+		}
+
+		cfg.Total = TotalConfig{
+			Supplement: viper.GetString("testnet.total.supplement"),
 		}
 
 	default:
